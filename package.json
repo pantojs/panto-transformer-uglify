@@ -1,6 +1,6 @@
 {
   "name": "panto-transformer-uglify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Uglify transformer for panto",
   "main": "index.js",
   "scripts": {

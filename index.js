@@ -29,7 +29,8 @@ class UglifyTransformer extends Transformer {
                         max_line_len: 3000
                     }
                 }, this.options.uglifyOptions, {
-                    fromString: true
+                    fromString: true,
+                    filename // for friendly log
                 });
 
                 const result = uglify.minify(content, uglifyOptions);
