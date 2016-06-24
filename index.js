@@ -29,9 +29,11 @@ class UglifyTransformer extends Transformer {
             isSlient
         } = this.options;
 
+        const extend = panto.util.extend;
+
         return new Promise((resolve, reject) => {
             try {
-                let ast = uglify.parse(content, panto.util.extend({}, parserOptions, {
+                let ast = uglify.parse(content, extend({}, parserOptions, {
                     filename
                 }));
 
@@ -39,14 +41,14 @@ class UglifyTransformer extends Transformer {
                 ast.compute_char_frequency(true);
                 ast.mangle_names(true);
 
-                const compressor = uglify.Compressor(panto.util.extend({}, compressorOptions, {
+                const compressor = uglify.Compressor(extend({}, compressorOptions, {
                     warnings: !isSlient
                 }));
 
                 ast = compressor.compress(ast);
 
-                resolve(panto.util.extend(file, {
-                    content: ast.print_to_string(panto.util.extend({
+                resolve(extend(file, {
+                    content: ast.print_to_string(extend({
                             ascii_only: true
                         }, generatorOptions)) //result.code
                 }));
