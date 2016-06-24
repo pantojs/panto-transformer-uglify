@@ -7,8 +7,11 @@ Uglify transformer for panto.
 panto.loadTransformer('uglify');
 
 panto.pick('**/*.js').pipe(panto.read()).pipe(panto.uglify({
-    uglifyOptions: {
-        compress: true
+    parseOptions: {
+        strict: true
+    },
+    compressOptions:{
+
     },
     ignoreError: true,
     isSlient: true
@@ -16,7 +19,9 @@ panto.pick('**/*.js').pipe(panto.read()).pipe(panto.uglify({
 ```
 
 ## options
- - uglifyOptions: object, see [here](https://github.com/mishoo/UglifyJS2)
+ - parserOptions: object, see [here](http://lisperator.net/uglifyjs/parser)
+ - compressorOptions: object, see [here](http://lisperator.net/uglifyjs/compress)
+ - generatorOptions: object, see [here](http://lisperator.net/uglifyjs/codegen)
  - ignoreError: boolean, if fail when error
  - isSlient: boolean, if log warnning message
 
