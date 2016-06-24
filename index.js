@@ -16,31 +16,40 @@ const uglify = require('uglify-js');
 
 class UglifyTransformer extends Transformer {
     _transform(file) {
-        const {
+        let {
             filename,
             content
         } = file;
+
+        const {
+            uglifyOptions,
+            ignoreError,
+            isSlient
+        } = this.options;
+
         return new Promise((resolve, reject) => {
             try {
-                const uglifyOptions = panto.util.extend(true, {
+                const finalUglifyOptions = panto.util.extend({
                     compress: true,
                     output: {
                         ascii_only: true,
                         max_line_len: 3000
                     }
-                }, this.options.uglifyOptions, {
+                }, uglifyOptions, {
                     fromString: true,
                     filename // for friendly log
                 });
 
-                const result = uglify.minify(content, uglifyOptions);
+                const result = uglify.minify(content, finalUglifyOptions);
 
                 resolve(panto.util.extend(file, {
                     content: result.code
                 }));
             } catch (err) {
-                if (this.options.ignoreError) {
-                    panto.log.warn(`UglifyTransform warnning in ${filename}: ${err.message}`);
+                if (ignoreError) {
+                    if (!isSlient) {
+                        panto.log.warn(`UglifyTransform warnning: ${err.message}`);
+                    }
                     resolve(file);
                 } else {
                     reject(err);
