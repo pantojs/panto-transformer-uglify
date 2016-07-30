@@ -6,7 +6,7 @@ Uglify transformer for panto.
 ```js
 panto.loadTransformer('uglify');
 
-panto.pick('**/*.js').pipe(panto.read()).pipe(panto.uglify({
+panto.pick('**/*.js').read().uglify({
     parseOptions: {
         strict: true
     },
@@ -15,7 +15,7 @@ panto.pick('**/*.js').pipe(panto.read()).pipe(panto.uglify({
     },
     ignoreError: true,
     isSlient: true
-})).end();
+});
 ```
 
 ## options
