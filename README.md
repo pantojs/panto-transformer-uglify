@@ -1,5 +1,5 @@
 # panto-transformer-uglify
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 Uglify transformer for panto.
 
@@ -34,3 +34,5 @@ panto.pick('**/*.js').read().uglify({
 [david-dm-image]:https://david-dm.org/pantojs/panto-transformer-uglify.svg
 [david-dm-dev-url]:https://david-dm.org/pantojs/panto-transformer-uglify#info=devDependencies
 [david-dm-dev-image]:https://david-dm.org/pantojs/panto-transformer-uglify/dev-status.svg
+[coveralls-image]:https://coveralls.io/repos/github/pantojs/panto-transformer-uglify/badge.svg?branch=master
+[coveralls-url]:https://coveralls.io/github/pantojs/panto-transformer-uglify?branch=master
